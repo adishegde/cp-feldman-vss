@@ -5,9 +5,7 @@
 #include <NTL/ZZ_p.h>
 #include <NTL/ZZ.h>
 
-#define uchar unsigned char
-#define P_LEN 64       // length of prime number in bits
-#define SECRET_LEN 16   // length of secret in bytes
+#include "constants.hpp"
 
 using namespace NTL;
 using namespace std;

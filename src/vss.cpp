@@ -4,6 +4,7 @@
 #include <NTL/ZZ_pX.h>
 #include <openssl/sha.h>
 
+#include "constants.hpp"
 #include "vss.hpp"
 
 using namespace NTL;
