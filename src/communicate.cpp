@@ -1,3 +1,4 @@
+#include <fstream>
 #include <vector>
 #include <NTL/ZZ_p.h>
 #include <NTL/ZZ.h>
@@ -45,11 +46,25 @@ void Share::set_cipher(const vector<uchar> &c) {
     }
 }
 
+void Share::print() {
+    cout << "Share: " << get_share() << endl;
+
+    vector<ZZ> c = get_commits();
+    cout << "Commits: " << c[0] << " " << c[1] << endl;
+
+    vector<uchar> cp = get_cipher();
+    cout << "Cipher: ";
+    for(auto i : cp) {
+        cout << (int)i << " ";
+    }
+    cout << endl;
+}
+
 ZZ Init::get_q() {
     return ZZFromBytes(q, STORAGE_LEN);
 }
 
-ZZ Init::get_p() {
+ZZ Init::get_g() {
     return ZZFromBytes(g, STORAGE_LEN);
 }
 
@@ -59,4 +74,26 @@ void Init::set_q(const ZZ &zq) {
 
 void Init::set_g(const ZZ &zg) {
     BytesFromZZ(g, zg, STORAGE_LEN);
+}
+
+bool Init::save(string f) {
+    ofstream fout;
+    fout.open(f, ios::out | ios::binary);
+
+    fout.write((char*) this, sizeof(Init));
+
+    fout.close();
+
+    return true;
+}
+
+bool Init::load(string f) {
+    ifstream fin;
+    fin.open(f, ios::in | ios::binary);
+
+    fin.read((char*) this, sizeof(Init));
+
+    fin.close();
+
+    return true;
 }

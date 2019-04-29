@@ -20,6 +20,8 @@ public:
 
     FeldmanVSS();
 
+    void print();
+
     static void init();
     static void load(const ZZ &q, const ZZ &g);
 
@@ -27,11 +29,11 @@ public:
     static ZZ get_g();
 
     static ZZ commit(const ZZ_p &a);
-    static bool verify(const vector<ZZ> commits, int ind, const ZZ_p &share);
+    static bool verify(const vector<ZZ> commits, int xval, const ZZ_p &share);
 
     // Currently relies on the fact that data is at least 16 bytes
     static FeldmanVSS split(const vector<uchar> &data);
-    static vector<uchar> reconstruct(const vector<int> &ind, const vector<ZZ_p> &shares, const vector<uchar> &cipher);
+    static vector<uchar> reconstruct(const vector<int> &xvec, const vector<ZZ_p> &shares, const vector<uchar> &cipher);
 };
 
 #endif

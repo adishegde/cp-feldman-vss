@@ -1,7 +1,6 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <string>
 #include <NTL/ZZ_p.h>
 
 #include "../src/vss.hpp"

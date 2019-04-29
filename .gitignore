@@ -1,1 +1,3 @@
 bin
+*.dat
+secret.txt

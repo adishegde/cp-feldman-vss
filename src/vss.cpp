@@ -154,3 +154,23 @@ vector<uchar> FeldmanVSS::reconstruct(
 
     return secret;
 }
+
+void FeldmanVSS::print() {
+    cout << "Shares: ";
+    for(auto i : shares) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    cout << "Commits: ";
+    for(auto i : commits) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    cout << "Cipher: ";
+    for(auto i : cipher) {
+        cout << (int)i << " ";
+    }
+    cout << endl;
+}

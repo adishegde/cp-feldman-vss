@@ -16,6 +16,7 @@ public:
     uchar share[STORAGE_LEN];
     uchar commits[2][STORAGE_LEN];
     uchar cipher[SECRET_LEN];
+    int xval;
 
     ZZ_p get_share();
     vector<ZZ> get_commits();
@@ -24,6 +25,14 @@ public:
     void set_share(const ZZ_p &share);
     void set_commits(const vector<ZZ> &commits);
     void set_cipher(const vector<uchar> &cipher);
+
+    void print();
+};
+
+class Request {
+public:
+    int party;
+    int type;
 };
 
 // Data common to everyone - output of Gen(1^n)
@@ -33,10 +42,13 @@ public:
     uchar g[STORAGE_LEN];
 
     ZZ get_q();
-    ZZ get_p();
+    ZZ get_g();
 
     void set_q(const ZZ &zq);
     void set_g(const ZZ &zg);
+
+    bool save(string f);
+    bool load(string f);
 };
 
 #endif
