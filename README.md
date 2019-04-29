@@ -18,3 +18,13 @@ The following make targets are available (which can be built by running
 `make <target_name>`):
 
 - **test**: This tests the core working of the VSS scheme.
+- **init**: This generates the prime number and the generator required for running
+the protocol. The data is stored in a file (default: `gen_out.dat`).
+- **dealer**: Dealer program. Given a file containing the secret, it computes the
+shares and distributes it to other parties. It also behaves like a normal party
+and can reconstruct the secret.
+- **party**: Represents individual parties. The parties can be made malicious
+through command line arguments. The parties first query their share from the
+dealer and can then recompute shares by interacting with any other party.
+- **proto**: This target is an alias to generate the `init`, `dealer` and `party`
+binaries.
