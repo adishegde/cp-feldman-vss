@@ -222,6 +222,18 @@ Share receive_share() {
 
     cout << "\n===== Receive Share =====\n";
     resp.print();
+
+    bool ok = FeldmanVSS::verify(
+        resp.get_commits(),
+        resp.xval,
+        resp.get_share()
+    );
+
+    if (ok) {
+        cout<<"\nShare verified successfully.\n";
+    } else {
+        cout<<"\nShare verification failed. Possible malicious dealer.\n";
+    }
     cout << "===== Receive Share =====\n\n";
 
     return resp;
