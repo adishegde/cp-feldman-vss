@@ -1,6 +1,11 @@
 # Foundations of Cryptography Project - 2019
 Implementing a Verifiable Secret Sharing Scheme (VSS Scheme).
 
+## Disclaimer
+These programs are not safe. They were implemented as a proof of concept and
+should **NOT** be used in the real world. The core API (`src/vss.cpp`) however,
+follows the exact description of Feldman's scheme.
+
 # Libraries Used
 - **ntl** - For Finite Field Arithmetic
 - **openssl** - For SHA256 Hash Function
